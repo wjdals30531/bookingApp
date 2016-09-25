@@ -1,33 +1,105 @@
 package com.example.wjm.ba.soccer;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.wjm.ba.R;
-//구장의 목록들이 보이게 하는 클래스
-public class SoccerFieldList extends AppCompatActivity {
 
+import java.security.acl.Group;
+
+//구장의 목록들이 보이게 하는 클래스
+public class SoccerFieldList extends Activity{
+    RadioButton newjeju,oldjeju,seoGwipo;
+    RadioGroup Group;
+    //스트링으로 저장된 프리퍼런스를 불러오는것 저장하는거는 InitialSetting 클래스에 있음
+    public static int region_code;
     ListView listView1;
     SoccerFieldListAdapter adapter;
+    Intent intent;
+    Bundle oncre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_soccer_field_list);  ///<---------이게 메인으로 되어있언 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-                                                                    //방금 잘못 지운거부터 찾는거 시작해신디ㅋㅋ 한참전에 잘못지운거연
+        oncre=savedInstanceState;
+        setContentView(R.layout.activity_soccer_field_list);
+
+        intent = new Intent(getApplicationContext(), SoccerFieldList.class);
+        Group = (RadioGroup) findViewById(R.id.RadioGroup);
+
+
 
         // 리스트뷰 객체 참조
         listView1 = (ListView) findViewById(R.id.listView1);
 
         // 어댑터 객체 생성
         adapter = new SoccerFieldListAdapter(this);// 리스트뷰에 어댑터 설정
+        //Resources res = getResources(); 왜있는지 모름
+        if(region_code==1){
+            Group.check(R.id.newJeju);
+            for(int i=0;i<=1;i++){
+            adapter.addItem(new SoccerFieldListItem(getStringPreferences("신제주구장" + i),getStringPreferences("신제주구장" + i),getStringPreferences("신제주구장" + i)));
+            }
+            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "신제주가격"));
+        }
+        else if(region_code==2) {
+            Group.check(R.id.oldJeju);
+            for (int i = 0; i <= 1; i++) {
+                adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i)));
 
-        Resources res = getResources();
-        adapter.addItem(new SoccerFieldListItem("추억의 테트리스", "30,000 다운로드", "900 원"));
+            }
+            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "구제주가격"));
+        }
+        else if(region_code==3){
+            Group.check(R.id.seoGwipo);
+            for(int i=0;i<=1;i++){
+                adapter.addItem(new SoccerFieldListItem(getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포구장" + i)));
+
+            }
+            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "서귀포가격"));
+        }
+        //라디오 버튼 변경감지
+        Group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+
+// TODO Auto-generated method stub
+                if(checkedId==R.id.newJeju) {
+                    region_code = 1;
+                }
+                else if(checkedId==R.id.oldJeju) {
+
+                    region_code = 2;
+
+                }
+                else if(checkedId==R.id.seoGwipo) {
+
+
+                    region_code = 3;
+                }
+                else{
+                        Toast.makeText(getApplicationContext(),
+                                "radio btn select plz", Toast.LENGTH_SHORT).show();
+                }
+
+                //액티비티 재시작하라고 만든건데 왜 되는지도 모르겠고
+                //rectrate만 쓰면 검은화면 되는걸로 봐서는 불안정하기 때문에 유심히 봐야될 코드
+
+                onCreate(oncre);
+            }
+
+        });
 
 
 
@@ -46,6 +118,22 @@ public class SoccerFieldList extends AppCompatActivity {
 
         });
 
+}
+
+    public String getStringPreferences(String str) {
+        SharedPreferences pref = getSharedPreferences(str,0);
+        String tempget = pref.getString(str,null);
+        return tempget;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+
+
+
     }
+}
 
