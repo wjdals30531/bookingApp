@@ -18,7 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".soccer.SoccerFieldList"></activity>
+        <activity android:name=".soccer.SoccerFieldList" />
+
+        <service
+            android:name=".InitialSetting"
+            android:enabled="true"
+            android:exported="true" />
+        <Receiver
+            android:name=".UpdateReceiver"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>
