@@ -18,11 +18,27 @@ import com.example.wjm.ba.soccer.SoccerFieldList;
 //첫화면
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+	preDATABASE savedata = new preDATABASE();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+	if(savedata.IsUpdated == true){
+		if(getStringPreferences("신제주구장"+0 == null){
+			savadata.save_NewJeju();
+		}
+		if(getStringPreferences("구제주구장"+0 == null){
+			savedata.save_OldJeju();
+		}
+		if(getStringPreferences("서귀포구장"+0 == null){
+			savedata.save_SeoGwipo
+		}
+		savedata.IsUpdated = false;
+	}
+
+	if(
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -77,7 +93,8 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    @Supp
+    ressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -102,4 +119,11 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+        public String getStringPreferences(String str) {
+	        SharedPreferences pref = getSharedPreferences(str,0);
+	        String tempget = pref.getString(str,null);
+        	return tempget;
+    	}
+    
 }
+
