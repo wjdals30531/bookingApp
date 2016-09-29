@@ -3,10 +3,8 @@ package com.example.wjm.ba.soccer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,10 +14,8 @@ import android.widget.Toast;
 
 import com.example.wjm.ba.R;
 
-import java.security.acl.Group;
-
 //구장의 목록들이 보이게 하는 클래스
-public class SoccerFieldList extends Activity{
+public class SoccerFieldList extends Activity {
     RadioButton newjeju,oldjeju,seoGwipo;
     RadioGroup Group;
     //스트링으로 저장된 프리퍼런스를 불러오는것 저장하는거는 InitialSetting 클래스에 있음
@@ -79,32 +75,39 @@ public class SoccerFieldList extends Activity{
                     region_code = 1;
                 }
                 else if(checkedId==R.id.oldJeju) {
-
                     region_code = 2;
-
                 }
                 else if(checkedId==R.id.seoGwipo) {
-
-
                     region_code = 3;
                 }
                 else{
-                        Toast.makeText(getApplicationContext(),
-                                "radio btn select plz", Toast.LENGTH_SHORT).show();
-                }
+            Toast.makeText(getApplicationContext(),
+                    "radio btn select plz", Toast.LENGTH_SHORT).show();
+        }
 
-                //액티비티 재시작하라고 만든건데 왜 되는지도 모르겠고
-                //rectrate만 쓰면 검은화면 되는걸로 봐서는 불안정하기 때문에 유심히 봐야될 코드
+        //액티비티 재시작하라고 만든건데 왜 되는지도 모르겠고
+        //rectrate만 쓰면 검은화면 되는걸로 봐서는 불안정하기 때문에 유심히 봐야될 코드
 
-                onCreate(oncre);
-            }
+        onCreate(oncre);
+    }
 
-        });
+});
 
 
 
         listView1.setAdapter(adapter);
         // 새로 정의한 리스너로 객체를 만들어 설정
+
+        listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "01031716424"));
+                startActivity(intent);
+                return false;
+            }
+        });
+        // 롱클릭 하면 전화로 넘어가는 코드 ---  행복하다
+
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -116,9 +119,9 @@ public class SoccerFieldList extends Activity{
 
             }
 
-        });
-
 }
+        );
+    }
 
     public String getStringPreferences(String str) {
         SharedPreferences pref = getSharedPreferences(str,0);

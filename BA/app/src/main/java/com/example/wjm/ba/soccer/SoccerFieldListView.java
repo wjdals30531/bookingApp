@@ -13,12 +13,7 @@ import com.example.wjm.ba.R;
 //텍스트뷰의 텍스트들을 저장하는것
 public class SoccerFieldListView extends LinearLayout{
 
-    /**
-     * Icon
-     */
-    //private ImageView mIcon;
-
-    /**
+     /**
      * TextView 01
      */
     private TextView mText01;
@@ -72,16 +67,5 @@ public class SoccerFieldListView extends LinearLayout{
             throw new IllegalArgumentException();
         }
     }
-
-    /**
-     * set Icon
-     *
-     * @param icon
-     */
-   /* public void setIcon(Drawable icon) {
-        mIcon.setImageDrawable(icon);
-    }
-    */
-
 }
 

@@ -3,7 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/soCCer"
             android:icon="@drawable/ic_menu_gallery"
             android:title="축구" />
         <item
