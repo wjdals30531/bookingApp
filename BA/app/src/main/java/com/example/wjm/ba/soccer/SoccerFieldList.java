@@ -45,14 +45,14 @@ public class SoccerFieldList extends Activity {
         if(region_code==1){
             Group.check(R.id.newJeju);
             for(int i=0;i<=1;i++){
-            adapter.addItem(new SoccerFieldListItem(getStringPreferences("신제주구장" + i),getStringPreferences("신제주구장" + i),getStringPreferences("신제주구장" + i)));
+            adapter.addItem(new SoccerFieldListItem(getStringPreferences("신제주구장" + i),getStringPreferences("신제주번호" + i),getStringPreferences("신제주가격" + i)));
             }
             adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "신제주가격"));
         }
         else if(region_code==2) {
             Group.check(R.id.oldJeju);
             for (int i = 0; i <= 1; i++) {
-                adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장"+i)+i, getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i)));
+                adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장"+i)+i, getStringPreferences("구제주번호" + i), getStringPreferences("구제주가격" + i)));
 
             }
             adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "구제주가격"));
@@ -60,7 +60,7 @@ public class SoccerFieldList extends Activity {
         else if(region_code==3){
             Group.check(R.id.seoGwipo);
             for(int i=0;i<=1;i++){
-                adapter.addItem(new SoccerFieldListItem(getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포구장" + i)));
+                adapter.addItem(new SoccerFieldListItem(getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포번호" + i),getStringPreferences("서귀포가격" + i)));
 
             }
             adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "서귀포가격"));
@@ -101,7 +101,9 @@ public class SoccerFieldList extends Activity {
         listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "01031716424"));
+                SoccerFieldListItem curItem = (SoccerFieldListItem) adapter.getItem(position);
+                String[] curData = curItem.getData();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + curData[1]));
                 startActivity(intent);
                 return false;
             }

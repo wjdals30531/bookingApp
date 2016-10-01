@@ -130,9 +130,9 @@ public class MainActivity extends AppCompatActivity
         editor.commit();
     }
     public void savedata() {
-        saveStringPreferences("신제주구장" + 0, "신제주 A구장");
-        saveStringPreferences("신제주번호" + 0, "1234567");
-        saveStringPreferences("신제주가격" + 0, "신제주 A구장가격");
+        saveStringPreferences("신제주구장" + 0, "내번호");
+        saveStringPreferences("신제주번호" + 0, "010-2201-1431");
+        saveStringPreferences("신제주가격" + 0, "길게누르면 나한테전화");
 
 
         saveStringPreferences("신제주구장" + 1, "신제주 B구장");
