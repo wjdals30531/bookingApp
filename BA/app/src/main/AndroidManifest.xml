@@ -20,16 +20,6 @@
         </activity>
         <activity android:name=".soccer.SoccerFieldList" />
 
-        <service
-            android:name=".InitialSetting"
-            android:enabled="true"
-            android:exported="true" />
-        <receiver android:name=".UpdateReceiver">
-            <intent-filter>
-                <action android:name ="com.example.wjm.ACTION_PACKAGE_ADDED"/>
-                <action android:name ="com.example.wjm.ACTION_PACKAGE_REPLACED"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

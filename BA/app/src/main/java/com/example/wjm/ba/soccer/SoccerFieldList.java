@@ -52,7 +52,7 @@ public class SoccerFieldList extends Activity {
         else if(region_code==2) {
             Group.check(R.id.oldJeju);
             for (int i = 0; i <= 1; i++) {
-                adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i)));
+                adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장"+i)+i, getStringPreferences("구제주구장" + i), getStringPreferences("구제주구장" + i)));
 
             }
             adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "구제주가격"));
