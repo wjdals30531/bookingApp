@@ -47,23 +47,18 @@ public class SoccerFieldList extends Activity {
             for(int i=0;i<=1;i++){
             adapter.addItem(new SoccerFieldListItem(getStringPreferences("신제주구장" + i),getStringPreferences("신제주번호" + i),getStringPreferences("신제주가격" + i)));
             }
-            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "신제주가격"));
         }
         else if(region_code==2) {
             Group.check(R.id.oldJeju);
             for (int i = 0; i <= 1; i++) {
                 adapter.addItem(new SoccerFieldListItem(getStringPreferences("구제주구장"+i)+i, getStringPreferences("구제주번호" + i), getStringPreferences("구제주가격" + i)));
-
             }
-            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "구제주가격"));
         }
         else if(region_code==3){
             Group.check(R.id.seoGwipo);
             for(int i=0;i<=1;i++){
                 adapter.addItem(new SoccerFieldListItem(getStringPreferences("서귀포구장" + i),getStringPreferences("서귀포번호" + i),getStringPreferences("서귀포가격" + i)));
-
             }
-            adapter.addItem(new SoccerFieldListItem("아직 서비스가 구현안되서", "내용이 안나온다", "서귀포가격"));
         }
         //라디오 버튼 변경감지
         Group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

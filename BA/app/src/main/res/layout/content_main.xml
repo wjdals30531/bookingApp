@@ -15,5 +15,5 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="아직 이미지가 없네요 하핳..!" />
 </RelativeLayout>

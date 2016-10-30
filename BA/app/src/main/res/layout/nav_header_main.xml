@@ -22,13 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="제주도민을 위한 구장 예약 어플~~"
+        android:text="JSBA"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="010-3171-6424" />
+        android:text="더불어오픈당 만세!!" />
 
 </LinearLayout>
