@@ -24,6 +24,7 @@ public class SoccerFieldList extends Activity {
     SoccerFieldListAdapter adapter;
     Intent intent;
     Bundle oncre;
+    boolean IsLongClick=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -94,8 +95,10 @@ public class SoccerFieldList extends Activity {
         // 새로 정의한 리스너로 객체를 만들어 설정
 
         listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                IsLongClick=true;
                 SoccerFieldListItem curItem = (SoccerFieldListItem) adapter.getItem(position);
                 String[] curData = curItem.getData();
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + curData[1]));
@@ -109,11 +112,13 @@ public class SoccerFieldList extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SoccerFieldListItem curItem = (SoccerFieldListItem) adapter.getItem(position);
-                String[] curData = curItem.getData();
+                if(!IsLongClick) {
+                    SoccerFieldListItem curItem = (SoccerFieldListItem) adapter.getItem(position);
+                    String[] curData = curItem.getData();
 
-                Toast.makeText(getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
+                }
+                IsLongClick=false;
             }
 
 }
