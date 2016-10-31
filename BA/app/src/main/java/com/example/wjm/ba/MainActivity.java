@@ -97,14 +97,23 @@ public class MainActivity extends AppCompatActivity
         editor.commit();
     }
     public void savedata() {
-        saveStringPreferences("신제주구장" + 0, "내번호");
-        saveStringPreferences("신제주번호" + 0, "010-2201-1431");
-        saveStringPreferences("신제주가격" + 0, "길게누르면 나한테전화");
+        saveStringPreferences("신제주구장" + 0, "제주제일고등학교");
+        saveStringPreferences("신제주번호" + 0, "064-740-8200");
+        saveStringPreferences("신제주가격" + 0, "진군길 22");
 
 
-        saveStringPreferences("신제주구장" + 1, "신제주 B구장");
-        saveStringPreferences("신제주번호" + 1, "신제주 B구장 번호");
-        saveStringPreferences("신제주가격" + 1, "신제주 B구장가격");
+        saveStringPreferences("신제주구장" + 1, "남녕고등학교");
+        saveStringPreferences("신제주번호" + 1, "064-742-1711");
+        saveStringPreferences("신제주가격" + 1, "연동 2288");
+
+        saveStringPreferences("신제주구장" + 2, "제주서중학교");
+        saveStringPreferences("신제주번호" + 2, "064-747-0394");
+        saveStringPreferences("신제주가격" + 2, "일주서로 7811");
+
+        saveStringPreferences("신제주구장" + 3, "제주중앙중학교");
+        saveStringPreferences("신제주번호" + 3, "064-743-1965");
+        saveStringPreferences("신제주가격" + 3, "선덕로5길 37");
+
 
         saveStringPreferences("구제주구장" + 0, "구제주 A구장");
         saveStringPreferences("구제주번호" + 0, "구제주 A구장 번호");

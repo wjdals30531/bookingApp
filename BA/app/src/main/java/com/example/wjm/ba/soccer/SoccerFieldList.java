@@ -45,7 +45,7 @@ public class SoccerFieldList extends Activity {
         //Resources res = getResources(); 왜있는지 모름
         if(region_code==1){
             Group.check(R.id.newJeju);
-            for(int i=0;i<=1;i++){
+            for(int i=0;i<=3;i++){
             adapter.addItem(new SoccerFieldListItem(getStringPreferences("신제주구장" + i),getStringPreferences("신제주번호" + i),getStringPreferences("신제주가격" + i)));
             }
         }
